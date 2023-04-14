@@ -15,7 +15,9 @@ module.exports = function (passport) {
                 }
                 // hacher le mot de passe (pour ma version finale)
                 // bcrypt.compare(password, usager.password, ... )
-                if (usager.password === password) {
+                console.log('usager de BD', usager);
+                console.log('login:', login, 'password:', password);
+                if (usager.pwd === password) {
                     return done(null, usager);
                 } else {
                     return done(null, false, {message: `Mot de passe invalide!`});

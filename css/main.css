@@ -1,3 +1,7 @@
 body {
     background-color:blanchedalmond;
 }
+.erreurs {
+    background-color: aqua;
+    color: red;
+}

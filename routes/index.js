@@ -7,6 +7,14 @@ const router = express.Router();
 router.get('/', (requete, reponse) => 
     reponse.render('index', {titre: 'mon beau site Web'}));
 
-
+router.get('/logout', (requete, reponse, next) => {
+    requete.logout(((err)=>{
+        if (err) {
+            return next(err);
+        }
+        requete.flash('success_msg', 'Vous êtes déconnecté');
+        reponse.redirect('/');
+    }));
+});
 
 module.exports = router;

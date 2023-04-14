@@ -9,11 +9,7 @@ const session = require('express-session');
 
 // connect to Atlas MongoDB
 mongoose.set('strictQuery', false);
-mongoose.connect('mongodb+srv://alain:dF3QFMghEXqusbmU@cluster0.yml6m.mongodb.net/test')
-
-
-
-
+mongoose.connect(dbPassword);
 
 // ne pas remonter plus haut...
 const db = mongoose.connection;
@@ -48,7 +44,12 @@ app.use(passport.session());
 app.use(flash());
 
 // quelques variables à définir pour le fonctionnement de l'authentification
-// ICI à compléter
+app.use(function(req, rep, next){
+    rep.locals.success_msg = req.flash('success_msg');
+    rep.locals.error_msg = req.flash('error_msg');
+    rep.locals.error = req.flash('error'); 
+    next();
+});
 
 app.use('/css', express.static('./css'));
 app.use('/js', express.static('./js'));

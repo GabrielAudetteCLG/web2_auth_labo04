@@ -1,3 +1,13 @@
+    <!-- affichage des erreurs... -->
+    <%- include ('./partiels/erreurs_msg') %>
+
     <h1>Ma première page EJS</h1>
     <p>TEST</p>
     <p><%= new Date().toLocaleDateString(); %></p>
+    <form action="/usagers/login" method="POST">
+        <p>Login: <input type="text" name="login" id="login"></p>
+        <p>Mot de passe: <input type="password" name="password" id="pwd"></p>
+        <input type="submit" value="Confirmer">
+    </form>
+
+
